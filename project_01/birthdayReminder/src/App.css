@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  box-sizing: border-box;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #ffa1f3, #db87cc);
+  flex-direction: column;
+}
+.MainSec {
+  padding: 10px 5px;
+  text-align: center;
+  width: 50%;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #ffffff, #ffffff);
+  box-shadow: 6px 6px 12px #ca7dbc, -6px -6px 12px #ffb0ff;
+  max-height: 70%;
+  overflow-y: scroll;
+}
+h2 {
+  margin: 20px 0px;
+}
+.divmain {
+  padding: 3px 5px;
+  height: 80px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 40px 1fr 60px;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #ffffff, #ffffff);
+  box-shadow: 2px 2px 10px #d6d2d5, -2px -2px 10px #af9faf;
+}
+.divmain > div {
+  padding: 7px 0px;
+  display: inline-block;
+  margin: auto;
+}
+img {
+  width: 60px;
+  height: 100%;
+  border-radius: 5px;
+}
+button {
+  position: absolute;
+  bottom: 10px;
+  width: 40%;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #ff4ad2, #e742a8);
+  box-shadow: 6px 6px 12px #ca7dbc, -6px -6px 12px #ffb0ff;
+}
+@media only screen and (max-width: 600px) {
+  .MainSec {
+    width: 90%;
+  }
+}
+
+/* **for scroll bar** */
+
+.MainSec::-webkit-scrollbar {
+  width: 5px;
+  visibility: hidden;
+}
+.MainSec::-webkit-scrollbar-track:hover {
+  background-color: #ffa1f3;
+}
+
+.MainSec::-webkit-scrollbar:hover {
+  visibility: visible;
+}

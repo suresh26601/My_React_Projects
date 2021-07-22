@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+main {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: whitesmoke;
+}
+section {
+  width: 80%;
+  padding: 20px 15px;
+  margin: auto;
+  text-align: center;
+}
+section > h1 {
+  color: peru;
+}
+section > div {
+  color: rgb(59, 49, 1);
+  margin: 20px 1%;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  border: 1px solid wheat;
+  box-shadow: 3px 3px 10px 2px rgb(187, 187, 187),
+    -3px -3px 10px 2px rgb(255, 255, 255);
+}
+button {
+  border-radius: 4px;
+  margin: 0px 5px;
+  border: none;
+  background: antiquewhite;
+  padding: 3px 4px;
+  color: brown;
+  cursor: pointer;
+  box-shadow: -2px -2px 5px 1px white, 2px 2px 5px 1px #d9d9d9;
+}
+button:hover {
+  box-shadow: -1px -1px 3px 1px rgb(245, 245, 245), 1px 1px 3px 1px #c2c2c2;
+}
+input {
+  border: none;
+  border-radius: 5px;
+  padding: 2px 2px;
+}
