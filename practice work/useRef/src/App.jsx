@@ -6,7 +6,11 @@ export const App = () => {
     const [people, setPeople] = useState('')
     const handleSubmit=(e)=>{
         e.preventDefault()
+        if (inpEmail.current.value && inpName.current.value){
         setPeople([...people,{Email:inpEmail.current.value,Name:inpName.current.value,id:new Date().getTime().toString()}])
+        inpEmail.current.value=''
+        inpName.current.value=''
+       }
     }
     useEffect(() => {
         console.log(people);   
