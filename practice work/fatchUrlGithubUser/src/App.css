@@ -1,10 +1,15 @@
-* {
+*{
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
 #root {
-  width: 100vw;
+  width: 100%;
   height: auto;
   text-transform: capitalize;
   background-color: black;
