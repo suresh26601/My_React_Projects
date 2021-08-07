@@ -1,3 +1,4 @@
+// typeScript transpiles everything in ES3
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -25,8 +26,11 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 // :::::::::::: variable in TS:::::::::::
-var ppds = 1;
-console.log(ppds);
+var day = 1;
+console.log(day);
+var hello = "hii";
+hello = "hii bro";
+// hello =34;  // gives error
 // ::::::::::::::function in TS:::::::::::::::
 var main = function (one, two) {
     console.log(one, two);
@@ -34,6 +38,11 @@ var main = function (one, two) {
 };
 var myName = main("suresh", "kumawat");
 console.log(myName);
+// :::::::::::::Object in TS::::::::::::::
+var normalUser = {
+    firstName: "shunya",
+    lastName: "devta"
+};
 var objOne = {
     name: "Rahul",
     friendsCount: 300,
@@ -50,7 +59,7 @@ var objTwo = {
 console.log(objOne.friendsCount);
 console.log(objOne.sleepAlways());
 console.log(objTwo.sleepAlways());
-// :::::::::: uniouns:::::::::::::::
+// :::::::::: uniouns:operator to combine data types:::::::::::::::
 var userName = "alex";
 var pageName = "19";
 //  console.log(pageName);
@@ -58,21 +67,21 @@ var pageName = "19";
 console.log(pageName);
 var id = "1";
 var userDetail = null;
-var someData;
+var someData; //bad code
 var todoArr = ["go to market", "write a song"];
 // :::::::::: Any / void / never / unknown ::::::::
-// void******
+// void:(set of undefined and null)******
 var dontDo = function (myName) {
     console.log("My name is ", myName);
-};
-var iAmEmpty = null || undefined;
+}; //return nothing 
+var iAmEmpty = null || undefined; //single pipe `|` for defining the types and double `||` for assigning the values as a unioun.
 dontDo("suresh kumawat");
 // any**** dont use "any" in your code 
 var mtlbii = 34;
 mtlbii = "sdfs";
-// console.log(mtlbii.fus())
 mtlbii = { fd: "fgd" };
-//never *********** it can never give any return value 
+//  console.log(mtlbii.fus()) //gives error not in TS bcoz of any but in JS transpile ,so dont use any 
+//never *********** it cant give `return value` //no endpoint
 var neverEnd = function () {
     console.log("hello brother !");
     while (true) { }
@@ -80,23 +89,15 @@ var neverEnd = function () {
 };
 // unkonown*********** like any but not exactly
 var pageNumberUnknown = "10"; // the type is not known(string or number or...)
+//  console.log(pageNumberUnknown.fus()) // gives error in TS 
 var pageInString = pageNumberUnknown;
+// console.log("i am",3+ pageInString,typeof pageInString);
 var pageInNumber = pageNumberUnknown;
+// console.log("i am",4+ pageInNumber,typeof pageInNumber);
 // or can use in type conversion 
 var strIs = "5000";
 var intIS = strIs;
-// **********keep in touch with unknown and void******
-// *************try to avoide to use any******
-// **********never is not used mostly**********
-// ::::::::::::::working with DOM::::::::::::::::::
-// const mainElement = document.querySelector(".classNameAny") as HTMLInputElement;
-// console.log(mainElement.value); //html element has value property as above we defined the type first
-// mainElement.addEventListener('click',(event)=>{
-//     const Target =event.target as HTMLInputElement;
-// console.log(Target.value);
-// })
-console.log();
-console.log();
+// class UniqueClass {
 var UniqueClass = /** @class */ (function () {
     function UniqueClass(firstUniqeName, lastUniqeName) {
         this.firstUniqeName = firstUniqeName;
@@ -105,6 +106,7 @@ var UniqueClass = /** @class */ (function () {
     }
     UniqueClass.prototype.changeReadeOnly = function () {
         // this.cantChangeMe ="i am Awesome" //it will throws error
+        console.log("is me", this.cantChangeMe);
         this.firstUniqeName = "rahul";
     };
     UniqueClass.prototype.getUniqeName = function () {
@@ -118,9 +120,9 @@ var UniqueClass = /** @class */ (function () {
     UniqueClass.maxAge = 50;
     return UniqueClass;
 }());
-// const objUniuqeOne = new UniqueClass("suresh","kumawat")
+var objUniuqeOne = new UniqueClass("suresh", "kumawat");
 // console.log(objUniuqeOne.getUniqeName());
-// objUniuqeOne.changeReadeOnly()
+objUniuqeOne.changeReadeOnly();
 // console.log(objUniuqeOne.getUniqeName());
 // console.log(UniqueClass.getMaxAge(40))
 // :::::::::Inharitance::::::::::::
@@ -153,7 +155,7 @@ var genericObj = {
 };
 var genericFun = addId(genericObj);
 console.log("result", genericFun);
-// ::::::::::ENUM:::::::::::: enum is used to provide sense of values.
+// ::::::::::ENUM:::::::::::: Enum is used to make the value meaningful
 var statusLikeEnum = {
     sunday: 0,
     monday: 1,
@@ -176,3 +178,10 @@ var statusEnum;
 console.log(statusEnum.whatIsThis);
 var newEnumDataType = statusEnum.march;
 console.log(newEnumDataType);
+var enumInterfaceObj = {
+    id: "10",
+    enumState: statusEnum.may
+};
+console.log(enumInterfaceObj.enumState);
+var p = 34;
+var ss = "shunya";

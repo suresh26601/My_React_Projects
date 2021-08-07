@@ -1,6 +1,11 @@
+// typeScript transpiles everything in ES3
+
 // :::::::::::: variable in TS:::::::::::
-const ppds: number = 1;
-console.log(ppds);
+const day: number = 1;
+console.log(day);
+let hello :string="hii";
+hello ="hii bro";
+// hello =34;  // gives error
 // ::::::::::::::function in TS:::::::::::::::
 const main = (one: String, two: String): String => {
   console.log(one, two);
@@ -9,6 +14,11 @@ const main = (one: String, two: String): String => {
 const myName: String = main("suresh", "kumawat");
 console.log(myName);
 // :::::::::::::Object in TS::::::::::::::
+const normalUser :{firstName:string,lastName:string} ={
+  firstName:"shunya",
+  lastName:"devta"
+}
+// ::::::::::interface in TS::::::::::::::
 interface UserInterface {
   name: String;
   friendsCount?: Number;
@@ -30,7 +40,7 @@ const objTwo: UserInterface = {
 console.log(objOne.friendsCount);
 console.log(objOne.sleepAlways());
 console.log(objTwo.sleepAlways());
-// :::::::::: uniouns:::::::::::::::
+// :::::::::: uniouns:operator to combine data types:::::::::::::::
 let userName: string = "alex";
 let pageName: string | number = "19";
 //  console.log(pageName);
@@ -42,25 +52,26 @@ const id: ID = "1";
 // ::::::::::::::::::type+ union::::::::::
 type UI = null | UserInterface;
 let userDetail: UI = null;
-let someData: number | null | undefined | object | string;
+let someData: number | null | undefined | object | string;//bad code
 type TODO = ID[] | null;
 let todoArr: TODO = ["go to market", "write a song"];
 
 // :::::::::: Any / void / never / unknown ::::::::
 
-// void******
+// void:(set of undefined and null)******
 const dontDo =(myName:string):void=>{
     console.log("My name is ",myName);
-}
-const iAmEmpty :void=null || undefined;
+} //return nothing 
+const iAmEmpty :void=null || undefined; //single pipe `|` for defining the types and double `||` for assigning the values as a unioun.
 dontDo("suresh kumawat")
+
 // any**** dont use "any" in your code 
 let mtlbii:any = 34;
 mtlbii="sdfs"
-// console.log(mtlbii.fus())
 mtlbii ={fd:"fgd"}
+//  console.log(mtlbii.fus()) //gives error not in TS bcoz of any but in JS transpile ,so dont use any 
  
-//never *********** it can never give any return value 
+//never *********** it cant give `return value` //no endpoint
 const neverEnd=(): never=>{
     console.log("hello brother !")
     while(true){}
@@ -69,13 +80,20 @@ const neverEnd=(): never=>{
 
 // unkonown*********** like any but not exactly
 let pageNumberUnknown :unknown = "10" // the type is not known(string or number or...)
+//  console.log(pageNumberUnknown.fus()) // gives error in TS 
 let pageInString :string =pageNumberUnknown as string;
+// console.log("i am",3+ pageInString,typeof pageInString);
 let pageInNumber :number=pageNumberUnknown as number;
+// console.log("i am",4+ pageInNumber,typeof pageInNumber);
+
 // or can use in type conversion 
 let strIs: string = "5000"
 let intIS:number = (strIs as unknown) as number
+// console.log(typeof intIS)
+
+// :::::::::points:::::::::::::
 // **********keep in touch with unknown and void******
-// *************try to avoide to use any******
+// *************try to avoide the use of any******
 // **********never is not used mostly**********
 
 
@@ -87,19 +105,18 @@ let intIS:number = (strIs as unknown) as number
 //     const Target =event.target as HTMLInputElement;
 // console.log(Target.value);
 // })
-console.log()
-console.log()
 // :::::::::::::: classes in typeScript :::::::::::::
-// ******* accessifire : public(default), private, protected******** ||public: access by every where ||protected : access by Child classes or self ||private : only  access by self
-//***** readonly : work like const *****
-//****static : it not the property of instaints of class while it is property of class and access by only class name. */
+// ******* accessifire : public(default), private, protected******** ||public: accessed every where ||protected : accessed by Child classes or self ||private : only accessed by self
+//***** readonly : works like const *****
+//****static : it is not the property of instance of class while it is property of class and accessed by only class name. */
 interface UniqueInterface{
     getUniqeName():string 
 }
 
-class UniqueClass {
-// class UniqueClass implements UniqueInterface{
-    private firstUniqeName :string; 
+// class UniqueClass {
+class UniqueClass implements UniqueInterface{
+  private firstUniqeName :string; 
+  // firstUniqeName: string; //puclic by default
     private lastUniqeName :string; 
     readonly cantChangeMe: string;
     static readonly maxAge:number = 50;
@@ -108,8 +125,10 @@ class UniqueClass {
         this.lastUniqeName=lastUniqeName;
         this.cantChangeMe = " And you father is awesome."
     }
-    changeReadeOnly(){
+    changeReadeOnly():void{
         // this.cantChangeMe ="i am Awesome" //it will throws error
+        console.log("is me",this.cantChangeMe);
+        
         this.firstUniqeName ="rahul"
     }
     getUniqeName():string {
@@ -121,9 +140,9 @@ class UniqueClass {
 
 }
 
-// const objUniuqeOne = new UniqueClass("suresh","kumawat")
+const objUniuqeOne = new UniqueClass("suresh","kumawat")
 // console.log(objUniuqeOne.getUniqeName());
-// objUniuqeOne.changeReadeOnly()
+objUniuqeOne.changeReadeOnly()
 // console.log(objUniuqeOne.getUniqeName());
 // console.log(UniqueClass.getMaxAge(40))
 
@@ -145,7 +164,7 @@ uniqueChildObjOne.getChildName()
 
 // ::::::::::::Generics::::::::::::
 
-const addId =<T extends object>(newObj:T)=>{
+const addId = <T extends object> (newObj:T)=>{
   const id = Math.random().toString(16) //gives the random value as a hax value string.
   return {
     uniqueId:id,
@@ -165,7 +184,7 @@ const genericObj : GenericInterface<{password:number},string>={
 const genericFun=addId<GenericInterface<{password:number},string>>(genericObj)
 console.log("result",genericFun);
 
-// ::::::::::ENUM:::::::::::: enum is used to provide sense of values.
+// ::::::::::ENUM:::::::::::: Enum is used to make the value meaningful
 const statusLikeEnum={
   sunday:0,
   monday:1,
@@ -189,9 +208,17 @@ console.log(statusEnum.whatIsThis);
 let newEnumDataType:statusEnum=statusEnum.march
 console.log(newEnumDataType);
 
-// ::::::enum + interface:::::::::: highly use
+// ::::::enum + interface:::::::::: highly used
 
 interface EnumInterface{
   id: string,
   enumState: statusEnum  //only gives the value of that enum
 }
+const enumInterfaceObj :EnumInterface={
+  id:"10",
+  enumState:statusEnum.may
+}
+console.log(enumInterfaceObj.enumState);
+
+const p : number=34;
+const ss:string="shunya";

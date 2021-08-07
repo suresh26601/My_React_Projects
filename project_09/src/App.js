@@ -16,7 +16,6 @@ const App = () => {
                 setIsColor(true)
             }
             catch{
-                console.log("color not avilable")
                 setIsColor(false)
             }
         }
@@ -26,13 +25,13 @@ const App = () => {
        <main>
            <section>
                <header>
-                    <input type="text" placeholder="#342fea" value={takeColor} onChange={(e)=>setTakeColor(e.target.value)} />
-                    <button onClick={handleChangeColor}>generate Color</button>
+                    <input type="text" placeholder="#342fea" className={isColor?null:"redInput"} value={takeColor} onChange={(e)=>setTakeColor(e.target.value)} />
+                    <button onClick={handleChangeColor}>Generate Color</button>
                </header>
                <footer>
                    {
                        allColorValues.map((color,id)=>{
-                           return <ColorBox key={id} {...color} />
+                           return <ColorBox key={id} id={id} {...color} />
                        })
                    }
                </footer>
